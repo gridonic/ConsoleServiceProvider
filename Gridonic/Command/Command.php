@@ -1,6 +1,6 @@
 <?php
 
-namespace Knp\Command;
+namespace Gridonic\Command;
 
 use Symfony\Component\Console\Command\Command as BaseCommand;
 

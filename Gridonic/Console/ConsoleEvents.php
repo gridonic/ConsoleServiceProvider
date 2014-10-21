@@ -1,6 +1,6 @@
 <?php
 
-namespace Knp\Console;
+namespace Gridonic\Console;
 
 final class ConsoleEvents
 {

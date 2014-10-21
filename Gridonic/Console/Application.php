@@ -1,6 +1,6 @@
 <?php
 
-namespace Knp\Console;
+namespace Gridonic\Console;
 
 use Symfony\Component\Console\Application as BaseApplication;
 use Silex\Application as SilexApplication;

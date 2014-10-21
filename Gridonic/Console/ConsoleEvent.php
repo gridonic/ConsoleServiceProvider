@@ -1,9 +1,9 @@
 <?php
 
-namespace Knp\Console;
+namespace Gridonic\Console;
 
 use Symfony\Component\EventDispatcher\Event;
-use Knp\Console\Application;
+use Gridonic\Console\Application;
 
 class ConsoleEvent extends Event
 {

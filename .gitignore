@@ -1,0 +1,7 @@
+# PhpStorm-Files
+atlassian-ide-plugin.xml
+.idea
+
+#Composer
+vendor
+composer.lock

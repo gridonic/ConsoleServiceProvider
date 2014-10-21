@@ -4,7 +4,7 @@ Provides a `Symfony\Component\Console` based console for Silex.
 
 ## Install
 
-Add `knplabs/console-service-provider` to your `composer.json` and register the service:
+Add `gridonic/console-service-provider` to your `composer.json` and register the service:
 
 ```php
 <?php
@@ -27,7 +27,7 @@ You can now copy the `console` executable in whatever place you see fit, and twe
 
 $app = new Silex\Application();
 
-// your beautiful silex bootstrap
+// Your beautiful silex bootstrap
 
 return $app;
 
@@ -46,12 +46,11 @@ $ app/console my:command
 
 ## Write commands
 
-Your commands should extend `Knp\Command\Command` to have access to the 2 useful following commands:
+Your commands should extend `Gridonic\Command\Command` to have access to the 2 useful following commands:
 
 * `getSilexApplication`, which returns the silex application
 * `getProjectDirectory`, which returns your project's root directory (as configured earlier)
 
-I know, it's a lot to learn, but it's worth the pain.
 
 ## Register commands
 
@@ -92,8 +91,8 @@ Example:
 <?php
 
 use My\Command\MyCommand;
-use Knp\Console\ConsoleEvents;
-use Knp\Console\ConsoleEvent;
+use Gridonic\Console\ConsoleEvents;
+use Gridonic\Console\ConsoleEvent;
 
 $app['dispatcher']->addListener(ConsoleEvents::INIT, function(ConsoleEvent $event) {
     $app = $event->getApplication();

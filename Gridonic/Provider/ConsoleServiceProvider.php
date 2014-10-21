@@ -1,13 +1,13 @@
 <?php
 
-namespace Knp\Provider;
+namespace Gridonic\Provider;
 
 use Silex\ServiceProviderInterface;
 use Silex\Application;
 
-use Knp\Console\Application as ConsoleApplication;
-use Knp\Console\ConsoleEvents;
-use Knp\Console\ConsoleEvent;
+use Gridonic\Console\Application as ConsoleApplication;
+use Gridonic\Console\ConsoleEvents;
+use Gridonic\Console\ConsoleEvent;
 
 class ConsoleServiceProvider implements ServiceProviderInterface
 {
