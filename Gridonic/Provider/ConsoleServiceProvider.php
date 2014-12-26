@@ -2,28 +2,32 @@
 
 namespace Gridonic\Provider;
 
-use Silex\ServiceProviderInterface;
-use Silex\Application;
-
 use Gridonic\Console\Application as ConsoleApplication;
-use Gridonic\Console\ConsoleEvents;
 use Gridonic\Console\ConsoleEvent;
+use Gridonic\Console\ConsoleEvents;
+use Silex\Application;
+use Silex\ServiceProviderInterface;
 
+/**
+ * Console service provider class
+ *
+ * @package Gridonic\Provider
+ */
 class ConsoleServiceProvider implements ServiceProviderInterface
 {
     public function register(Application $app)
     {
         $app['console'] = $app->share(function () use ($app) {
-            $application = new ConsoleApplication(
+            $console = new ConsoleApplication(
                 $app,
                 $app['console.project_directory'],
                 $app['console.name'],
                 $app['console.version']
             );
 
-            $app['dispatcher']->dispatch(ConsoleEvents::INIT, new ConsoleEvent($application));
+            $app['dispatcher']->dispatch(ConsoleEvents::INIT, new ConsoleEvent($console));
 
-            return $application;
+            return $console;
         });
     }
 

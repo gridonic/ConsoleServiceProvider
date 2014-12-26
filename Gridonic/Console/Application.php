@@ -7,10 +7,20 @@ use Silex\Application as SilexApplication;
 
 class Application extends BaseApplication
 {
+    /** @var SilexApplication */
     private $silexApplication;
 
+    /** @var string */
     private $projectDirectory;
 
+    /**
+     * Public constructor
+     *
+     * @param SilexApplication $application
+     * @param string $projectDirectory
+     * @param string $name
+     * @param string $version
+     */
     public function __construct(SilexApplication $application, $projectDirectory, $name = 'UNKNOWN', $version = 'UNKNOWN')
     {
         parent::__construct($name, $version);
