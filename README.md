@@ -4,23 +4,52 @@ Provides a `Symfony\Component\Console` based console for Silex.
 
 ## Install
 
-Add `gridonic/console-service-provider` to your `composer.json` and register the service:
+The recommended way to install ConsoleServiceProvider is [through composer](http://getcomposer.org).
+
+You can either add it as a depedency to your project using the command line:
+
+    $ composer require gridonic/console-service-provider
+
+or by adding it directly to your ```composer.json``` file:
+
+```json
+{
+    "require": {
+        "gridonic/console-service-provider": "1.0.*"
+    }
+}
+```
+
+Run these two commands to install it:
+
+    $ curl -s http://getcomposer.org/installer | php
+    $ php composer.phar install
+
+Now you can add the autoloader, and you will have access to the library:
+
+```php
+<?php
+require 'vendor/autoload.php';
+```
+
+Register the service provider with your Silex application
 
 ```php
 <?php
 
-use Knp\Provider\ConsoleServiceProvider;
+use Gridonic\Provider\ConsoleServiceProvider;
 
 $app->register(new ConsoleServiceProvider(), array(
-    'console.name'              => 'MyApplication',
-    'console.version'           => '1.0.0',
+    'console.name' => 'MyApplication',
+    'console.version' => '1.0.0',
     'console.project_directory' => __DIR__.'/..'
 ));
 
 ?>
 ```
 
-You can now copy the `console` executable in whatever place you see fit, and tweak it to your needs. You will need a way to fetch your silex application, the most common way is to return it from your bootstrap:
+You can now copy the `console` executable in whatever place you see fit, and tweak it to your needs.
+You will need a way to fetch your silex application, the most common way is to return it from your bootstrap:
 
 ```php
 <?php
@@ -50,7 +79,6 @@ Your commands should extend `Gridonic\Command\Command` to have access to the 2 u
 
 * `getSilexApplication`, which returns the silex application
 * `getProjectDirectory`, which returns your project's root directory (as configured earlier)
-
 
 ## Register commands
 
@@ -82,7 +110,7 @@ $application->run();
 This way is intended for use by provider developers and exposes an unobstrusive way to register commands in 3 simple steps:
 
 1. Register a listener to the `ConsoleEvents::INIT` event
-2. ???
+2. Implement your program logic
 3. PROFIT!
 
 Example:
@@ -96,7 +124,7 @@ use Gridonic\Console\ConsoleEvent;
 
 $app['dispatcher']->addListener(ConsoleEvents::INIT, function(ConsoleEvent $event) {
     $app = $event->getApplication();
-    $app->add(new MyCommand());            
+    $app->add(new MyCommand());
 });
 
 ?>
