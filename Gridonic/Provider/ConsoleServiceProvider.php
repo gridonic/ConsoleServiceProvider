@@ -25,6 +25,9 @@ class ConsoleServiceProvider implements ServiceProviderInterface
                 $app['console.version']
             );
 
+            // Set silex event dispatcher
+            $console->setDispatcher($app['dispatcher']);
+
             $app['dispatcher']->dispatch(ConsoleEvents::INIT, new ConsoleEvent($console));
 
             return $console;
